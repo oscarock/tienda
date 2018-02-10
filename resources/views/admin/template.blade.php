@@ -1,12 +1,11 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>@yield('title', 'Tienda Virtual')</title>
-	<link rel="stylesheet" type="text/css" href="https://bootswatch.com/3/darkly/bootstrap.min.css">
-	<link rel="stylesheet" type="text/css" href="{{ asset('css/styles.css') }}">
+	<title>Panel de Administracion</title>
+	<link rel="stylesheet" type="text/css" href="https://bootswatch.com/3/darkly/bootstrap.min.css">	
 </head>
 <body>
-	@include('store.partials.nav')
+	@include('admin.partials.nav')
 
 	@yield('content') 
 

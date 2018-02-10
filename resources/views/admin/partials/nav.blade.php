@@ -12,10 +12,13 @@
 
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-        
-        <li><a href="{{ route('inicio') }}">Productos</a></li>
-        <li><a href="{{ route('cart-show') }}">Carrito</a></li>
-             
+        @if(Auth::check())
+          @if(Auth::user()->profile == 'admin')
+          <li><a href="{{ route('product.index') }}">Productos</a></li>
+          <li><a href="{{ route('category.index') }}">Categorias</a></li>
+          <li><a href="{{ route('user.index') }}">Usuarios</a></li>
+          @endif
+        @endif
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li><a href="#">@if(Auth::check()) Bienvenido Usuario: {{ Auth::user()->email }} @endif</a></li>
@@ -27,7 +30,6 @@
           @else
             <a href="{{ route('login') }}">Ingresar</a>
           @endif
-            <li><a href="{{ route('user.create') }}">Registrase</a></li>
           </li>
       </ul>
     </div>

@@ -12,8 +12,8 @@ class StoreController extends Controller
     	return view('store.index', compact('products'));
     }
 
-    public function show($slug){
-    	$product = Product::where('slug', $slug)->first();
+    public function show($id){
+    	$product = Product::find($id);
     	return view('store.show', compact('product'));
     }
 }

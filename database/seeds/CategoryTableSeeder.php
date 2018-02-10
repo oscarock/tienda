@@ -16,16 +16,12 @@ class CategoryTableSeeder extends Seeder {
 	{
 		$data = array(
 			[
-				'name' => 'Super heroes', 
-				'slug' => 'super-heroes', 
-				'description' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tempore, perferendis!', 
-				'color' => '#440022'
+				'name' => 'Chaquetas', 
+				'description' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tempore, perferendis!'
 			],
 			[
-				'name' => 'Geek', 
-				'slug' => 'geek', 
-				'description' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tempore, perferendis!', 
-				'color' => '#445500'
+				'name' => 'Camisas', 
+				'description' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tempore, perferendis!'
 			]
 		);
 

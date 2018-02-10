@@ -11,6 +11,35 @@
 |
 */
 
-Route::get('/', 'StoreController@index');
+Route::bind('product',function($id){
+	return App\Product::where('id', $id)->first();
+});
 
-Route::get('product/{slug}', ['as' => 'product-detail','uses' => 'StoreController@show']);
+/*URLS STORE*/
+
+Route::get('/', ['as' => 'inicio', 'uses' => 'StoreController@index']);
+
+Route::get('product/{id}', ['as' => 'product-detail','uses' => 'StoreController@show']);
+
+Route::get('cart/show', ['as' => 'cart-show', 'uses' => 'CartController@show']);
+
+Route::get('cart/add/{product}', ['as' => 'cart-add', 'uses' => 'CartController@add']);
+
+Route::get('cart/delete/{product}', ['as' => 'cart-delete', 'uses' => 'CartController@delete']);
+
+Route::get('cart/trash', ['as' => 'cart-trash', 'uses' => 'CartController@trash']);
+
+Route::get('cart/update/{product}/{quantity?}', ['as' => 'cart-update', 'uses' => 'CartController@update']);
+
+Route::get('order-detail', ['middleware' => 'auth', 'as' => 'order-detail', 'uses' => 'CartController@orderDetail']);
+
+Route::get('order', ['as' => 'order', 'uses' => 'OrderController@generateOrder']);
+
+/*URLS ADMIN*/
+
+Route::resource('admin/category', 'Admin\CategoryController');
+Route::resource('admin/product', 'Admin\ProductController');
+Route::resource('admin/user', 'Admin\UserController');
+
+/*URLS AUTH*/
+Auth::routes();
