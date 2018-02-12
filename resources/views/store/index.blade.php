@@ -12,6 +12,12 @@
 			<br>
 			<br>
 			<br>
+			@if(\Session::has('message'))
+				<div class="alert alert-dismissible alert-success">
+		  			<button type="button" class="close" data-dismiss="alert">&times;</button>
+		  			<h3 class="text-center">{{ \Session::get('message') }}</h3>
+				</div>
+			@endif
 			@foreach($products as $product)
 				<div class="col-md-4">
 					<div class="panel panel-default">

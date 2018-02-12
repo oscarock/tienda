@@ -58,8 +58,8 @@
 				  <input name="signature"     type="hidden"  value="{{$signature}}"  >
 				  <input name="test"          type="hidden"  value="1" >
 				  <input name="buyerEmail"    type="hidden"  value="{{ Auth::user()->email }}" >
-				  <input name="responseUrl"    type="hidden"  value="{{ $_SERVER['HTTP_HOST'].'/responsePayu' }} " >
-				  <input name="confirmationUrl"    type="hidden"  value="{{ $_SERVER['HTTP_HOST'].'/confirmPayu' }}" >
+				  <input name="responseUrl"    type="hidden"  value="{{'http://127.0.0.1:8000/responsePayu'}}" >
+				  <input name="confirmationUrl"    type="hidden"  value="{{ '/confirmPayu' }}" >
 				  <input name="Submit"        type="submit"  value="Pagar" class="btn btn-success">
 				</form>			
 			</p>	

@@ -33,8 +33,6 @@ Route::get('cart/update/{product}/{quantity?}', ['as' => 'cart-update', 'uses' =
 
 Route::get('order-detail', ['middleware' => 'auth', 'as' => 'order-detail', 'uses' => 'CartController@orderDetail']);
 
-Route::get('order', ['as' => 'order', 'uses' => 'OrderController@generateOrder']);
-
 /*URLS ADMIN*/
 
 Route::resource('admin/category', 'Admin\CategoryController');
@@ -43,3 +41,7 @@ Route::resource('admin/user', 'Admin\UserController');
 
 /*URLS AUTH*/
 Auth::routes();
+
+/**/
+
+Route::get('responsePayu/{merchantId?}{merchant_name?}{merchant_address?}{telephone?}{lapTransactionState?}{referenceCode?}{lapPaymentMethod?}{lapPaymentMethodType?}{processingDate?}', 'OrderController@index');
