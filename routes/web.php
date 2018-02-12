@@ -42,6 +42,6 @@ Route::resource('admin/user', 'Admin\UserController');
 /*URLS AUTH*/
 Auth::routes();
 
-/**/
+/*RESPONSE PAYU*/
 
 Route::get('responsePayu/{merchantId?}{merchant_name?}{merchant_address?}{telephone?}{lapTransactionState?}{referenceCode?}{lapPaymentMethod?}{lapPaymentMethodType?}{processingDate?}', 'OrderController@index');
