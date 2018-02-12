@@ -46,7 +46,6 @@
 			@endphp
 			<p>
 				<a href="{{ route('inicio') }}" class="btn btn-warning">Regresar</a>
-				<a href="#" class="btn btn-success">Pagar</a>
 				<form method="post" action="https://sandbox.checkout.payulatam.com/ppp-web-gateway-payu/">
 				  <input name="merchantId"    type="hidden"  value="{{$merchantID}}"   >
 				  <input name="accountId"     type="hidden"  value="512321" >
@@ -61,7 +60,7 @@
 				  <input name="buyerEmail"    type="hidden"  value="{{ Auth::user()->email }}" >
 				  <input name="responseUrl"    type="hidden"  value="{{ $_SERVER['HTTP_HOST'].'/responsePayu' }} " >
 				  <input name="confirmationUrl"    type="hidden"  value="{{ $_SERVER['HTTP_HOST'].'/confirmPayu' }}" >
-				  <input name="Submit"        type="submit"  value="Enviar" >
+				  <input name="Submit"        type="submit"  value="Pagar" class="btn btn-success">
 				</form>			
 			</p>	
 	</div>	
