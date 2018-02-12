@@ -27,19 +27,42 @@
 				@foreach($cart as $item)
 					<tr>
 						<td>{{ $item->name }}</td>
-						<td>{{ number_format($item->price, 3) }}</td>
+						<td>{{ $item->price }}</td>
 						<td>{{ $item->quantity }}</td>
-						<td>{{ number_format($item->price * $item->quantity, 3) }}</td>
+						<td>{{ $item->price * $item->quantity }}</td>
 					</tr>
 				@endforeach
 			</tbody>
 		</table>
 		<hr>
-			<h3>Total: ${{ number_format($total, 3) }}</h3>
+			<h3>Total: ${{ $total, 3 }}</h3>
 			<br>
+			@php
+				$api = "4Vj8eK4rloUd272L48hsrarnUA";
+				$merchantID = "508029";
+				$references = rand();
+				$amount = $total;
+				$signature = md5($api."~".$merchantID."~".$references."~".$amount."~USD");
+			@endphp
 			<p>
 				<a href="{{ route('inicio') }}" class="btn btn-warning">Regresar</a>
-				<a href="#" class="btn btn-success">Pagar</a>				
+				<a href="#" class="btn btn-success">Pagar</a>
+				<form method="post" action="https://sandbox.checkout.payulatam.com/ppp-web-gateway-payu/">
+				  <input name="merchantId"    type="hidden"  value="{{$merchantID}}"   >
+				  <input name="accountId"     type="hidden"  value="512321" >
+				  <input name="description"   type="hidden"  value="Mi Tienda"  >
+				  <input name="referenceCode" type="hidden"  value="{{$references}}" >
+				  <input name="amount"        type="hidden"  value="{{$amount}}"   >
+				  <input name="tax"           type="hidden"  value="19"  >
+				  <input name="taxReturnBase" type="hidden"  value="19" >
+				  <input name="currency"      type="hidden"  value="USD" >
+				  <input name="signature"     type="hidden"  value="{{$signature}}"  >
+				  <input name="test"          type="hidden"  value="1" >
+				  <input name="buyerEmail"    type="hidden"  value="{{ Auth::user()->email }}" >
+				  <input name="responseUrl"    type="hidden"  value="{{ $_SERVER['HTTP_HOST'].'/responsePayu' }} " >
+				  <input name="confirmationUrl"    type="hidden"  value="{{ $_SERVER['HTTP_HOST'].'/confirmPayu' }}" >
+				  <input name="Submit"        type="submit"  value="Enviar" >
+				</form>			
 			</p>	
 	</div>	
 @stop

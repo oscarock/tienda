@@ -26,12 +26,12 @@
 					<tr>
 						<td><img src="{{ $item->image }}" width="50"></td>
 						<td>{{ $item->name }}</td>
-						<td>{{ number_format($item->price, 3) }}</td>
+						<td>{{ $item->price }}</td>
 						<td>
 						<input type="number" min="1" max="100" value="{{ $item->quantity }}" id="product_{{ $item->id }}">
 						<a href="#" class="btn-update-item" data-href="{{ route('cart-update', $item) }}" data-id="{{ $item->id }}"><span class="glyphicon glyphicon-refresh"></span></a>
 						</td>
-						<td>{{ number_format($item->price * $item->quantity, 3) }}</td>
+						<td>{{ $item->price * $item->quantity }}</td>
 						<td>
 							<a href="{{ route('cart-delete', $item->id) }}" class="btn btn-danger"><span class="glyphicon glyphicon-trash"></span></a>
 						</td>
@@ -41,7 +41,7 @@
 		</table>
 		<br>
 		<hr>
-			<h3>Total: ${{ number_format($total, 3) }}</h3>
+			<h3>Total: ${{ $total }}</h3>
 			<br>
 		<p>
 			<a href="{{ route('inicio') }}" class="btn btn-primary">Seguir Comprando</a>
