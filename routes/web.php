@@ -33,11 +33,14 @@ Route::get('cart/update/{product}/{quantity?}', ['as' => 'cart-update', 'uses' =
 
 Route::get('order-detail', ['middleware' => 'auth', 'as' => 'order-detail', 'uses' => 'CartController@orderDetail']);
 
+Route::get('my-orders', ['middleware' => 'auth', 'as' => 'my-orders', 'uses' => 'OrderController@getUser']);
+
 /*URLS ADMIN*/
 
 Route::resource('admin/category', 'Admin\CategoryController');
 Route::resource('admin/product', 'Admin\ProductController');
 Route::resource('admin/user', 'Admin\UserController');
+Route::get('orders', ['middleware' => 'auth', 'as' => 'orders', 'uses' => 'OrderController@getAll']);
 
 /*URLS AUTH*/
 Auth::routes();

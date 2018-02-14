@@ -36,4 +36,17 @@ class OrderController extends Controller
 
     	return redirect()->route('inicio')->with('message', $message); 	
 	}
+
+
+    public function getAll(){
+        $orders = Order::all();
+        $orderItems = OrderItem::all();
+        return view('admin.order.index',compact('orders','orderItems'));
+    }
+
+    public function getUser(){
+        //return \Auth::user()->id;
+        $orders = Order::where('user_id', \Auth::user()->id)->get();
+        return view('store.order', compact('orders'));
+    }
 }

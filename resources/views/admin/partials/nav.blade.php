@@ -14,9 +14,10 @@
       <ul class="nav navbar-nav">
         @if(Auth::check())
           @if(Auth::user()->profile == 'admin')
-          <li><a href="{{ route('product.index') }}">Productos</a></li>
-          <li><a href="{{ route('category.index') }}">Categorias</a></li>
-          <li><a href="{{ route('user.index') }}">Usuarios</a></li>
+            <li><a href="{{ route('product.index') }}">Productos</a></li>
+            <li><a href="{{ route('category.index') }}">Categorias</a></li>
+            <li><a href="{{ route('user.index') }}">Usuarios</a></li>
+            <li><a href="{{ route('orders') }}">Ordenes</a></li>
           @endif
         @endif
       </ul>
